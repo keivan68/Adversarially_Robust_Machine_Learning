@@ -23,7 +23,7 @@ elif n==2:
 ###############################################################################
 ### Sub-gradient method
 # initialization
-iter_no=250
+iter_no=40000
 init=iter_no+1
 Lx=np.zeros((n,init))
 Llam=np.zeros((1,init))
@@ -36,7 +36,7 @@ c=0
 x=c*np.ones((n,init))
 u=c*np.ones((n,init))
 lam=c*np.ones((1,init))
-v=12*np.ones((1,init))
+v=0*np.ones((1,init))
 
 # Subgradient algorithm iterations
 t=time.time()
@@ -94,10 +94,10 @@ print('x =',x[:,-1])
 # plot
 K=np.linspace(0,init,init)
 plt.figure(1)
-#plt.plot(K,x[0,:],label=r"$x_1$")
-#if n==2:
-#    plt.plot(K,x[1,:],label=r"$x_2$")
-#plt.plot(K,lam[0,:],label=r"$\lambda$")
+plt.plot(K,x[0,:],label=r"$x_1$")
+if n==2:
+    plt.plot(K,x[1,:],label=r"$x_2$")
+plt.plot(K,lam[0,:],label=r"$\lambda$")
 if n==1:
     plt.plot(K,u[0,:],label=r"$u$")
 if n==2:
